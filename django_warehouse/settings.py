@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-xc(*pkaa99u-qy=c!fa(@ioo6pi&zpt-9^h=44i!wj@dte$3cq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['warehouse-django.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'django_warehouse.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'django-warehouse',
+         'USER' : 'root',
+         'PASSWORD' : '',
+         'HOST' : 'localhost',
+         'PORT' : '3306',
     }
 }
 

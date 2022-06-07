@@ -2,6 +2,29 @@
 
 {% block content %}
 
-<h1>login page</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12 pt-5">
+            <div class="card align-middle mb-2">
+                <h5 class="card-header text-center text-light bg-dark">Login</h5>
+                <div class="card-body">
+                    {% include 'messages.html' %}
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Username</label>
+                          <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary text-center">Submit</button>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
