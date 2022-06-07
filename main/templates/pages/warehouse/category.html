@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table id="table" class="table table-bordered">
+                <thead  class="alert-warning">
+                    <tr>
+                        <th>first</th>
+                        <th>last</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>name first</td>
+                        <td>name last</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% load static %}
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/category/index.js' %}"></script>
+{% endblock scripts %}

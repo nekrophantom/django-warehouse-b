@@ -6,16 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Django Warehouse</title>
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/datatable/css/jquery.dataTables.css' %}">
+ 
+    
 </head>
 <body>
+
 
     {% block content %}
 
 
     {% endblock %}
     
+
+    {% include 'footer.html' %}
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/datatable/js/jquery.dataTables.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    {% block scripts %}
+    {% endblock %}
 </body>
 </html>
