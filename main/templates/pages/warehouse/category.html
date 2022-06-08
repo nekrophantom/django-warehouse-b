@@ -9,15 +9,19 @@
             <table id="table" class="table table-bordered">
                 <thead  class="alert-warning">
                     <tr>
-                        <th>first</th>
-                        <th>last</th>
+                        <th>No</th>
+                        <th>Category Name</th>
+                        <th>Created At</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>name first</td>
-                        <td>name last</td>
-                    </tr>
+                  {% for categories in category %}
+                  <tr>
+                    <td>{{ forloop.counter  }}</td>
+                    <td>{{ categories.description }}</td>
+                    <td>{{ categories.created }}</td>
+                  </tr>  
+                  {% endfor %}
                 </tbody>
             </table>
         </div>

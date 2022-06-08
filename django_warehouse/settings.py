@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'main.apps.MainConfig',
+    'rest_framework',
     'django_extensions'
 ]
 
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'django_warehouse.urls'

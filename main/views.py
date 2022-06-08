@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from .models import categoryWarehouse, warehouse
 
 # Create your views here.
 
@@ -54,5 +55,9 @@ def dashboardPage(request):
 
 @login_required(login_url= 'login')
 def categoryWarehousePage(request):
-    context = {}
+    category = categoryWarehouse.objects.all()
+
+    context = {
+        'category' : category,
+    }
     return render(request, 'pages/warehouse/category.html', context)
