@@ -1,17 +1,18 @@
 {% extends 'index.html' %}
 
 {% block content %}
-{% include 'navbar.html' %}
 
-<div class="container">
+
     <div class="row">
-        <div class="col-12">
-            <table id="table" class="table table-bordered">
-                <thead  class="alert-warning">
+        <div class="col-12 mt-3 mb-3">
+            <a href="{% url 'create-category-warehouse' %}" class="btn btn-primary mb-3">Create</a>
+            <table id="table" class="table table-sm">
+                <thead  class="table-dark">
                     <tr>
                         <th>No</th>
                         <th>Category Name</th>
                         <th>Created At</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,14 +20,21 @@
                   <tr>
                     <td>{{ forloop.counter  }}</td>
                     <td>{{ categories.description }}</td>
-                    <td>{{ categories.created }}</td>
+                    <td>{{ categories.created|date:'M d, Y' }}</td>
+                    <td>
+                        <a href="{% url 'update-category-warehouse' categories.id %}" class="btn bg-warning">
+                            Update
+                        </a>
+                        <a href="{% url 'delete-category-warehouse' categories.id %}" class="btn bg-danger">
+                            Delete
+                        </a>
+                    </td>
                   </tr>  
                   {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
-</div>
 
 {% endblock content %}
 

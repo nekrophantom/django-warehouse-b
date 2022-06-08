@@ -13,14 +13,21 @@
 </head>
 <body>
 
-
+    {% if page != 'login' %}
+    {% include 'navbar.html' %}
+    {% endif %}
+    
+    <div class="container">
     {% block content %}
 
 
     {% endblock %}
-    
+    </div>
 
+    {% if page != 'login' %}
     {% include 'footer.html' %}
+    {% endif %}
+
     <script src="{% static 'jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/datatable/js/jquery.dataTables.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

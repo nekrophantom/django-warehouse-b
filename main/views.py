@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .models import categoryWarehouse, warehouse
+from .forms import categoryWarehouseForm
 
 # Create your views here.
 
@@ -60,4 +61,57 @@ def categoryWarehousePage(request):
     context = {
         'category' : category,
     }
-    return render(request, 'pages/warehouse/category.html', context)
+    return render(request, 'pages/warehouse/category/category.html', context)
+    
+@login_required(login_url= 'login')
+def createCategoryWarehousePage(request):
+    form = categoryWarehouseForm()
+    
+    if request.method == "POST":
+        form = categoryWarehouseForm(request.POST)
+        if form.is_valid():    
+            form.save()
+            return redirect('category-warehouse')
+        else:
+            messages.error(request, 'Register failed')
+
+    context = {
+        'form' : form,
+
+    }
+    return render(request, 'pages/warehouse/category/create.html', context)
+
+        
+@login_required(login_url= 'login')
+def updateCategoryWarehousePage(request, pk):
+    category = categoryWarehouse.objects.get(id=pk)
+    form = categoryWarehouseForm(instance=category)
+    
+    if request.method == "POST":
+        form = categoryWarehouseForm(request.POST, insrance=category)
+        if form.is_valid():    
+            form.save()
+            return redirect('category-warehouse')
+        else:
+            messages.error(request, 'Update failed')
+
+    context = {
+        'form' : form,
+        
+    }
+    return render(request, 'pages/warehouse/category/create.html', context)
+
+    
+@login_required(login_url= 'login')
+def deleteCategoryWarehousePage(request, pk):
+    category = categoryWarehouse.objects.get(id=pk)
+
+    if request.method == 'POST':
+        category.delete()
+        return redirect('category-warehouse')
+
+    context = {
+        'obj' : category,
+        
+    }
+    return render(request, 'pages/warehouse/category/delete.html', context)
