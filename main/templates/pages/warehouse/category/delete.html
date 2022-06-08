@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+    <div class="row">
+        <div class="col-12 mt-3 mb-3">
+            {% include 'messages.html' %}
+
+            <form action="" method="POST" autocomplete="off">
+                {% csrf_token %}
+
+                <p>Are you sure want to delete "{{obj}}" ? </p>
+
+                <input class="btn btn-primary" type="submit" name="Confirm">
+                <a class="btn btn-danger" href="{% url 'category-warehouse' %}">Back</a>
+
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% load static %}
+{% block scripts %}
+<script type="text/javascript" src="{% static 'js/category/index.js' %}"></script>
+{% endblock scripts %}
